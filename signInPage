@@ -1,0 +1,13 @@
+import java.util.*;//import scanner
+import javax.swing.*;// 
+
+public class signInPage{
+    public static void main(String[] args){
+        Object [] options = {"Log in to saved account", "Sign up to create new account"};
+        int signIn = JoptionPane.showOptionDialog(null, "Log in or sign up to access", JOptionPane.LOGIN_SIGNUP_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        
+
+
+
+    }
+}
