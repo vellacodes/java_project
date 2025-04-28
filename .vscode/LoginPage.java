@@ -6,7 +6,9 @@ import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.nio.Buffer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -122,10 +124,27 @@ public class LoginPage extends JFrame implements ActionListener{
             then get role from employee[i](userInfo[2]) and take to page based on role.
             //if not found, then show message that username and password are incorrect.
             */
-            
-            FileReader fileReader = new FileReader("users.csv");
-                String line = newFile.NewLine();
-
+            String file = "vscode\\users.csv";//file path to csv file
+            BufferedReader reader = null//BufferedReader to read the file
+            String line = newFile.NewLine();
+            try{
+                reader = new BufferedReader(new FileReader(fileName));
+                while((line = reader.readLine()) ! = null){
+                    String[] row = line.split(",");//splits strings into array of strings based on commas
+                    for(String index : row){
+                        System.out.printf("%10s", index); //print out the index of the row to see if it works
+                    }
+                }
+            } catch(Exception e){
+                e.printStackTrace();//displays what exactly went wrong
+            }
+            finally{
+                try{
+                reader.close();//close reader.
+                } catch(Exception e){
+                    e.printStackTrace();//displays what went wrong
+                }
+            }
                 String[]userInfo = line.Split(“,”); //separates wherever there is a comma, splits data into array of strings to access easier
                 ArrayList(employees) users //from employee class? List of role, user, and pass
                 Employee e = newEmployee(userInfo(0), userInfo(1), userInfo(2));
