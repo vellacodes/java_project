@@ -1,10 +1,11 @@
 import java.util.*;//import scanner
 import javax.swing.JOptionPane;// import JOptionPane
 import java.awt.*;//import AWT graphics
-import java.awt.event.*;
+import java.awt.event.*;//more graphics
 
-
-public class signInPage{
+//code for joption pane pop-up window
+//gives user option to log in or sign up
+public class WelcomePage{
     public static void main(String[] args){
         Object [] options = {"Log in to saved account", "Sign up to create new account"};
         //first pop-up window to ask user to log in or sign up
@@ -12,12 +13,17 @@ public class signInPage{
         //takes user to different page based on their choice
         if( signIn == JOptionPane.YES_OPTION){
             //code for log in page
+            //sends user to login page if they choose to log in
                 EventQueue.invokeLater(() -> {
-                    new TestFrame().login();
+                    new LoginPage().login();
                 });
         }else if( signIn== JOptionPane.NO_OPTION){
             JOptionPane.showMessageDialog(null, "Sign up to create new account", "Sign up", JOptionPane.INFORMATION_MESSAGE);
             //code for sign up page
+            //sends user to sign up page if they choose to sign up
+                EventQueue.invokeLater(() -> {
+                 //make signuppage   new SignUpPage().signUp();
+                });
             
         }else{
             //error message if user closes the pop-up window or clicks cancel
