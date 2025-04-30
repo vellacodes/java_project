@@ -1,5 +1,4 @@
-
-
+//employee class to store employee information
 
 public class Employee {
     private String username;
@@ -11,5 +10,14 @@ public class Employee {
         this.password = password;
         this.role = role;
     }
-    
+
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public String getRole(){
+        return role;
+    }
 }
