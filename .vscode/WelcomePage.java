@@ -23,6 +23,9 @@ public class WelcomePage{
             //sends user to sign up page if they choose to sign up
                 EventQueue.invokeLater(() -> {
                  //make signuppage   new SignUpPage().signUp();
+                //code for sign up page
+                //sends user to sign up page if they choose to sign up
+                    new SigninPage().signin();
                 });
             
         }else{

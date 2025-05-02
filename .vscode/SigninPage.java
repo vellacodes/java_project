@@ -1,3 +1,6 @@
+//code for displaying the sign in page after welcome page input
+
+
 //for the login page graphics, we used example code from stackoverflow.com
 
 //imports for all the graphics, buttons, and readers we may need
@@ -18,35 +21,63 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginPage extends JFrame implements ActionListener{
+    public class SigninPage extends JFrame implements ActionListener{
 
     private JFrame frame; //main frame
     private JFrame lframe; //login frame
+    //graphics variables
     private Container container;
+    //labels for the text fields
+    private JLabel firstNameLabel;
+    private JLabel lastNameLabel;
     private JLabel userLabel;
     private JLabel passwordLabel;
+    private JLabel password2Label;
+    private JLabel roleLabel;
+    //text fields for the user to input their information
+    private JTextField firstNameField;
+    private JTextField lastNameField;
     private JTextField userTextField;
     private JPasswordField passwordField;
+    private JPasswordField password2Field;
+    private JTextField roleField;
+
     private JButton loginButton;
     private JButton resetButton;
     private JCheckBox showPassword;
 
+    private String firstName = ""; // firstName instance variable
+    private String lastName = ""; // lastName instance variable
+    private String role = ""; // Declare role as an instance variable
     private String userText = ""; // Declare userText as an instance variable
-    private String pwdText = "";  // Declare pwdText as an instance variable
+    private String pwdText = "";// Declare pwdText as an instance variable
+    private String pwd2Text = ""; // Declare pwd2Text as an instance variable (for double password check)
 
 //creates graphics for new login page
-    public LoginPage() {
-        container = getContentPane();
-        userLabel = new JLabel("USERNAME");
-        passwordLabel = new JLabel("PASSWORD");
+    public SigninPage() {
+//      assign labels
+        firstNameLabel = new JLabel("FIRST NAME:");
+        lastNameLabel = new JLabel("LAST NAME:");
+        roleLabel = new JLabel("ROLE:");
+        userLabel = new JLabel("CREATE USERNAME:");
+        passwordLabel = new JLabel("PASSWORD:");
+        password2Label = new JLabel("COMFIRM PASSWORD:");
+        
+
+        //assign text fields
+        firstNameField = new JTextField();
+        lastNameField = new JTextField();
+        roleField = new JTextField();
         userTextField = new JTextField();
         passwordField = new JPasswordField();
+        password2Field = new JPasswordField();
+        //assign buttons
         loginButton = new JButton("LOGIN");
         resetButton = new JButton("RESET");
         showPassword = new JCheckBox("Show Password");
         /*JFrame*/ lframe=new JFrame();
         container = lframe.getContentPane(); // ADDED this line
-        lframe.setTitle("Login:");
+        lframe.setTitle("Sign Up Page:");
 
         /*JFrame*/ frame = new JFrame();
         frame.setTitle("Background");
@@ -61,7 +92,7 @@ public class LoginPage extends JFrame implements ActionListener{
         lframe.setVisible(true); //if the login is successful then the main frame is visible
     }
 
-    public void login() {
+    public void signin() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
@@ -74,21 +105,43 @@ public class LoginPage extends JFrame implements ActionListener{
     }
  
     public void setLocationAndSize() {
-        lframe.setBounds(500,500,500,500);
-        userLabel.setBounds(50, 150, 100, 30);
-        passwordLabel.setBounds(50, 220, 100, 30);
-        userTextField.setBounds(150, 150, 150, 30);
-        passwordField.setBounds(150, 220, 150, 30);
-        showPassword.setBounds(150, 250, 150, 30);
-        loginButton.setBounds(50, 300, 100, 30);
-        resetButton.setBounds(200, 300, 100, 30);
+        //set the size of the text fields and buttons
+        lframe.setBounds(650,300,500,500);
+
+        firstNameLabel.setBounds(50, 50, 100, 30);
+        lastNameLabel.setBounds(50, 100, 100, 30);
+        roleLabel.setBounds(50, 150, 100, 30);
+        userLabel.setBounds(50, 200, 150, 30);
+        passwordLabel.setBounds(50, 250, 100, 30);
+        password2Label.setBounds(50, 300, 150, 30);
+
+        firstNameField.setBounds(200, 50, 150, 30);
+        lastNameField.setBounds(200, 100, 150, 30);
+        roleField.setBounds(200, 150, 150, 30);
+        userTextField.setBounds(200, 200, 150, 30);
+        passwordField.setBounds(200, 250, 150, 30);
+        password2Field.setBounds(200, 300, 150, 30);
+
+        showPassword.setBounds(150, 350, 150, 30);
+        loginButton.setBounds(100, 400, 100, 30);
+        resetButton.setBounds(250, 400, 100, 30);
     }
  
     public void addComponentsToContainer() {
+        container.add(firstNameLabel);
+        container.add(lastNameLabel);
+        container.add(roleLabel);
         container.add(userLabel);
         container.add(passwordLabel);
+        container.add(password2Label);
+
+        container.add(firstNameField);
+        container.add(lastNameField);
+        container.add(roleField);
         container.add(userTextField);
         container.add(passwordField);
+        container.add(password2Field);
+
         container.add(showPassword);
         container.add(loginButton);
         container.add(resetButton);
@@ -106,21 +159,45 @@ public class LoginPage extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+            firstName = "";
+            lastName = "";
             userText = "";
             pwdText = "";
+            pwd2Text = ""; 
+            role = "";
         if (e.getSource() == loginButton) {
+            //geting info from text fields
+            firstName = firstNameField.getText();
+            lastName = lastNameField.getText();
+            role = roleField.getText(); 
             userText = userTextField.getText();
             pwdText = new String(passwordField.getPassword());
-            System.out.println(userText + " " + pwdText); //for testing purposes
+            pwd2Text = new String(password2Field.getPassword());
+            if(pwdText.equals(pwd2Text)){
+                System.out.println(userText + " " + pwdText); //for testing purposes
+            }else{
+                JOptionPane.showMessageDialog(this, "Passwords do not match"); //if passwords do not match, show error message
+                return; //exit the method if passwords do not match
+            }
+            
         ArrayList<Employee> employees = new ArrayList<Employee>(); //from employee class? List of role, user, and pass
             /*
-            loop through csv file
-            //read line into some variable
-            string array split on commas\
-            creates a size array of strings 
-            read line one before loop b/.c not a person
+            string array split on commas
+            writes new user info into the csv file
             */
             //looping through the csv file
+            try{
+                FileWriter writer = new FileWriter("U:/github/java_project/.vscode/users.csv", true); //create a file writer to write to the csv file
+                BufferedWriter bw = new BufferedWriter(writer); //create a buffered writer to write to the file
+                PrintWriter pw = new PrintWriter(bw); //create a print writer to write to the file
+                pw.println(userText + "," + pwdText + "," + role + "," + firstName + " " + lastName ); //write the user info to the file
+                System.out.println(userText + "," + pwdText + "," + role + "," + firstName + " " + lastName ); //for testing purposes
+
+                pw.close(); //close the file writer
+            }catch(IOException ex){
+                System.out.println("File not found"); //if file is not found, print error message
+            }
+            /* 
            try{
                 File file = new File("U:/github/java_project/.vscode/users.csv"); //create a file object to read the csv file
                 Scanner reader = new Scanner(file);
@@ -150,7 +227,7 @@ public class LoginPage extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(this, "Invalid Username");
                     break;
                 }
-            }
+            }*/
         }
         //Coding Part of RESET button
         if (e.getSource() == resetButton) {
