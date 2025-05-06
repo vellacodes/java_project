@@ -42,7 +42,7 @@ import javax.swing.JTextField;
     private JPasswordField password2Field;
     private JTextField roleField;
 
-    private JButton loginButton;
+    private JButton createButton;
     private JButton resetButton;
     private JCheckBox showPassword;
 
@@ -72,7 +72,7 @@ import javax.swing.JTextField;
         passwordField = new JPasswordField();
         password2Field = new JPasswordField();
         //assign buttons
-        loginButton = new JButton("LOGIN");
+        createButton = new JButton("CREATE ACCOUNT");
         resetButton = new JButton("RESET");
         showPassword = new JCheckBox("Show Password");
         /*JFrame*/ lframe=new JFrame();
@@ -123,8 +123,8 @@ import javax.swing.JTextField;
         password2Field.setBounds(200, 300, 150, 30);
 
         showPassword.setBounds(150, 350, 150, 30);
-        loginButton.setBounds(100, 400, 100, 30);
-        resetButton.setBounds(250, 400, 100, 30);
+        createButton.setBounds(75, 400, 150, 30);
+        resetButton.setBounds(275, 400, 100, 30);
     }
  
     public void addComponentsToContainer() {
@@ -143,7 +143,7 @@ import javax.swing.JTextField;
         container.add(password2Field);
 
         container.add(showPassword);
-        container.add(loginButton);
+        container.add(createButton);
         container.add(resetButton);
         
         JLabel lblNewLabel = new JLabel("test1.png");
@@ -153,7 +153,7 @@ import javax.swing.JTextField;
     }
  
     public void addActionEvent() {
-        loginButton.addActionListener(this);
+        createButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
@@ -165,7 +165,7 @@ import javax.swing.JTextField;
             pwdText = "";
             pwd2Text = ""; 
             role = "";
-        if (e.getSource() == loginButton) {
+        if (e.getSource() == createButton) {
             //geting info from text fields
             firstName = firstNameField.getText();
             lastName = lastNameField.getText();
@@ -180,7 +180,6 @@ import javax.swing.JTextField;
                 return; //exit the method if passwords do not match
             }
             
-        ArrayList<Employee> employees = new ArrayList<Employee>(); //from employee class? List of role, user, and pass
             /*
             string array split on commas
             writes new user info into the csv file
@@ -197,37 +196,6 @@ import javax.swing.JTextField;
             }catch(IOException ex){
                 System.out.println("File not found"); //if file is not found, print error message
             }
-            /* 
-           try{
-                File file = new File("U:/github/java_project/.vscode/users.csv"); //create a file object to read the csv file
-                Scanner reader = new Scanner(file);
-                String line = reader.nextLine();
-                while(reader.hasNextLine()){ //while there is a next line in the file
-                    line = reader.nextLine(); //read the next line of the file
-                    String[] userData = line.split(","); //splits strings into array of strings based on commas
-                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, and role
-                } reader.close();
-           }catch(FileNotFoundException ex){
-                System.out.println("File not found"); //if file is not found, print error message
-           }
-
-            //looping through array list of employees
-            for(Employee emp : employees){
-                if(emp.getUsername().equals(userText)){
-                    if(emp.getPassword().equals(pwdText)){
-                        //log into role
-                        JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName()); //if username and password are correct, show welcome message
-
-                        break;
-                    }else{
-                        JOptionPane.showMessageDialog(this, "Invalid Password");
-                        break;
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(this, "Invalid Username");
-                    break;
-                }
-            }*/
         }
         //Coding Part of RESET button
         if (e.getSource() == resetButton) {
@@ -238,8 +206,10 @@ import javax.swing.JTextField;
         if (e.getSource() == showPassword) {
             if (showPassword.isSelected()) {
                 passwordField.setEchoChar((char) 0);
+                password2Field.setEchoChar((char) 0);
             } else {
                 passwordField.setEchoChar('*');
+                password2Field.setEchoChar('*');
             }
         }        
     }

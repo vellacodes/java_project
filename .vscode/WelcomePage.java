@@ -18,11 +18,9 @@ public class WelcomePage{
                     new LoginPage().login();
                 });
         }else if( signIn== JOptionPane.NO_OPTION){
-            JOptionPane.showMessageDialog(null, "Sign up to create new account", "Sign up", JOptionPane.INFORMATION_MESSAGE);
             //code for sign up page
             //sends user to sign up page if they choose to sign up
                 EventQueue.invokeLater(() -> {
-                 //make signuppage   new SignUpPage().signUp();
                 //code for sign up page
                 //sends user to sign up page if they choose to sign up
                     new SigninPage().signin();
