@@ -2,13 +2,11 @@
 
 //imports for all the graphics, buttons, and readers we may need
 import java.awt.Container;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -112,7 +110,7 @@ public class LoginPage extends JFrame implements ActionListener{
             userText = userTextField.getText();
             pwdText = new String(passwordField.getPassword());
             System.out.println(userText + " " + pwdText); //for testing purposes
-        ArrayList<Employee> employees = new ArrayList<Employee>(); //from employee class? List of role, user, and pass
+        ArrayList<Employee> employees = new ArrayList<Employee>(); //from employee class- List of role, user, and pass
             /*
             loop through csv file
             //read line into some variable
@@ -127,8 +125,11 @@ public class LoginPage extends JFrame implements ActionListener{
                 String line = reader.nextLine();
                 while(reader.hasNextLine()){ //while there is a next line in the file
                     line = reader.nextLine(); //read the next line of the file
-                    String[] userData = line.split(","); //splits strings into array of strings based on commas
-                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, and role
+                    String[] userData = line.split(","); //splits strings into array of strings based on commas\
+
+                    System.out.println(userData[0] + " " + userData[1] + " " + userData[2] + " " + userData[3] + " " + userData[4]); //for testing purposes
+
+                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, role, first name, and last name
                 } reader.close();
            }catch(FileNotFoundException ex){
                 System.out.println("File not found"); //if file is not found, print error message

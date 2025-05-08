@@ -5,13 +5,10 @@
 
 //imports for all the graphics, buttons, and readers we may need
 import java.awt.Container;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -174,7 +171,7 @@ import javax.swing.JTextField;
             pwdText = new String(passwordField.getPassword());
             pwd2Text = new String(password2Field.getPassword());
             if(pwdText.equals(pwd2Text)){
-                System.out.println(userText + " " + pwdText); //for testing purposes
+                System.out.println(pwdText); //for testing purposes
             }else{
                 JOptionPane.showMessageDialog(this, "Passwords do not match"); //if passwords do not match, show error message
                 return; //exit the method if passwords do not match

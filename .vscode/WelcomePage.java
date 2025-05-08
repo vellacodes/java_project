@@ -1,7 +1,5 @@
-import java.util.*;//import scanner
 import javax.swing.JOptionPane;// import JOptionPane
 import java.awt.*;//import AWT graphics
-import java.awt.event.*;//more graphics
 
 //code for joption pane pop-up window
 //gives user option to log in or sign up

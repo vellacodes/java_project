@@ -5,7 +5,6 @@ import java.awt.*;
 import java.util.Calendar;
 import java.util.Locale;
 
-import javax.swing.JFrame;
 
 public class WeeklyCalendar extends Frame {
 
