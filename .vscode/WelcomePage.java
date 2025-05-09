@@ -1,10 +1,30 @@
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;// import JOptionPane
 import java.awt.*;//import AWT graphics
+import javax.swing.JLabel;//import JLabel
 
 //code for joption pane pop-up window
 //gives user option to log in or sign up
-public class WelcomePage{
+public class WelcomePage extends JFrame{
+    private JFrame frame; //main frame
+
+    public WelcomePage(){
+        /*JFrame*/ 
+        frame = new JFrame();
+        frame.setTitle("Background");
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new JLabel(/*new ImageIcon("test.png")*/" "));
+        frame.setResizable(false);
+        JMenuBar menuBar = new JMenuBar();
+        frame.setJMenuBar(menuBar);
+        frame.setVisible(true); //the main frame
+    }
     public static void main(String[] args){
+        EventQueue.invokeLater(() -> {
+            new WelcomePage();
+        });
         Object [] options = {"Log in to saved account", "Sign up to create new account"};
         //first pop-up window to ask user to log in or sign up
         int signIn = JOptionPane.showOptionDialog(null, "Log in or sign up to access", "Sign In page", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);

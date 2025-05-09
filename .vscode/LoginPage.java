@@ -43,7 +43,7 @@ public class LoginPage extends JFrame implements ActionListener{
         resetButton = new JButton("RESET");
         showPassword = new JCheckBox("Show Password");
         /*JFrame*/ lframe=new JFrame();
-        container = lframe.getContentPane(); // ADDED this line
+        container = lframe.getContentPane();
         lframe.setTitle("Login:");
 
         /*JFrame*/ frame = new JFrame();
@@ -72,14 +72,14 @@ public class LoginPage extends JFrame implements ActionListener{
     }
  
     public void setLocationAndSize() {
-        lframe.setBounds(500,500,500,500);
-        userLabel.setBounds(50, 150, 100, 30);
-        passwordLabel.setBounds(50, 220, 100, 30);
-        userTextField.setBounds(150, 150, 150, 30);
-        passwordField.setBounds(150, 220, 150, 30);
-        showPassword.setBounds(150, 250, 150, 30);
-        loginButton.setBounds(50, 300, 100, 30);
-        resetButton.setBounds(200, 300, 100, 30);
+        lframe.setBounds(725,245,500,500);
+        userLabel.setBounds(120, 140, 100, 30);
+        passwordLabel.setBounds(120, 210, 100, 30);
+        userTextField.setBounds(220, 140, 150, 30);
+        passwordField.setBounds(220, 210, 150, 30);
+        showPassword.setBounds(220, 250, 150, 30);
+        loginButton.setBounds(115, 300, 100, 30);
+        resetButton.setBounds(265, 300, 100, 30);
     }
  
     public void addComponentsToContainer() {

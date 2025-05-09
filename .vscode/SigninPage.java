@@ -103,7 +103,7 @@ import javax.swing.JTextField;
  
     public void setLocationAndSize() {
         //set the size of the text fields and buttons
-        lframe.setBounds(650,300,500,500);
+        lframe.setBounds(700,300,500,500);
 
         firstNameLabel.setBounds(50, 50, 100, 30);
         lastNameLabel.setBounds(50, 100, 100, 30);
