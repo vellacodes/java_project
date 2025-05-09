@@ -154,7 +154,7 @@ import javax.swing.JTextField;
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
-
+    
     public void actionPerformed(ActionEvent e) {
             firstName = "";
             lastName = "";
@@ -170,13 +170,10 @@ import javax.swing.JTextField;
             userText = userTextField.getText();
             pwdText = new String(passwordField.getPassword());
             pwd2Text = new String(password2Field.getPassword());
-            if(pwdText.equals(pwd2Text)){
-                System.out.println(pwdText); //for testing purposes
-            }else{
+            if(!pwdText.equals(pwd2Text)){
                 JOptionPane.showMessageDialog(this, "Passwords do not match"); //if passwords do not match, show error message
                 return; //exit the method if passwords do not match
             }
-            
             /*
             string array split on commas
             writes new user info into the csv file
@@ -186,18 +183,22 @@ import javax.swing.JTextField;
                 FileWriter writer = new FileWriter("U:/github/java_project/.vscode/users.csv", true); //create a file writer to write to the csv file
                 BufferedWriter bw = new BufferedWriter(writer); //create a buffered writer to write to the file
                 PrintWriter pw = new PrintWriter(bw); //create a print writer to write to the file
-                pw.println(userText + "," + pwdText + "," + role + "," + firstName + " " + lastName ); //write the user info to the file
-                System.out.println(userText + "," + pwdText + "," + role + "," + firstName + " " + lastName ); //for testing purposes
-
+                pw.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //write the user info to the file
+                System.out.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //for testing purposes
                 pw.close(); //close the file writer
+                JOptionPane.showMessageDialog(this, "Account Created Successfully. Welcome " + role + " " + firstName + " " + lastName); //show success message
             }catch(IOException ex){
                 System.out.println("File not found"); //if file is not found, print error message
             }
         }
         //Coding Part of RESET button
         if (e.getSource() == resetButton) {
+            firstNameField.setText("");
+            lastNameField.setText("");
+            roleField.setText("");
             userTextField.setText("");
             passwordField.setText("");
+            password2Field.setText("");
         }
        //Coding Part of showPassword JCheckBox
         if (e.getSource() == showPassword) {

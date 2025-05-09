@@ -126,9 +126,6 @@ public class LoginPage extends JFrame implements ActionListener{
                 while(reader.hasNextLine()){ //while there is a next line in the file
                     line = reader.nextLine(); //read the next line of the file
                     String[] userData = line.split(","); //splits strings into array of strings based on commas\
-
-                    System.out.println(userData[0] + " " + userData[1] + " " + userData[2] + " " + userData[3] + " " + userData[4]); //for testing purposes
-
                     employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, role, first name, and last name
                 } reader.close();
            }catch(FileNotFoundException ex){

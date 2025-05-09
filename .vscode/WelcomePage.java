@@ -10,17 +10,13 @@ public class WelcomePage{
         int signIn = JOptionPane.showOptionDialog(null, "Log in or sign up to access", "Sign In page", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         //takes user to different page based on their choice
         if( signIn == JOptionPane.YES_OPTION){
-            //code for log in page
             //sends user to login page if they choose to log in
                 EventQueue.invokeLater(() -> {
                     new LoginPage().login();
                 });
         }else if( signIn== JOptionPane.NO_OPTION){
-            //code for sign up page
             //sends user to sign up page if they choose to sign up
                 EventQueue.invokeLater(() -> {
-                //code for sign up page
-                //sends user to sign up page if they choose to sign up
                     new SigninPage().signin();
                 });
             
