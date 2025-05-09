@@ -8,6 +8,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.awt.EventQueue;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -187,6 +188,12 @@ import javax.swing.JTextField;
                 System.out.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //for testing purposes
                 pw.close(); //close the file writer
                 JOptionPane.showMessageDialog(this, "Account Created Successfully. Welcome " + role + " " + firstName + " " + lastName); //show success message
+
+                //when account created, send user to login page
+                EventQueue.invokeLater(() -> {
+                    new LoginPage().login(); //send user to login page
+                });
+
             }catch(IOException ex){
                 System.out.println("File not found"); //if file is not found, print error message
             }

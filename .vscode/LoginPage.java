@@ -131,14 +131,25 @@ public class LoginPage extends JFrame implements ActionListener{
            }catch(FileNotFoundException ex){
                 System.out.println("File not found"); //if file is not found, print error message
            }
-
             //looping through array list of employees
             for(Employee emp : employees){
                 if(emp.getUsername().equals(userText)){
                     if(emp.getPassword().equals(pwdText)){
                         //log into role
                         JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName()); //if username and password are correct, show welcome message
-
+                        if(emp.getRole().equalsIgnoreCase("doctor")){
+                            //send to doctor page
+                            JOptionPane.showMessageDialog(this, "Welcome Doctor Page"); //for testing purposes
+                        }else if(emp.getRole().equalsIgnoreCase("nurse")){
+                            //send to nurse page
+                            JOptionPane.showMessageDialog(this, "Welcome Nurse Page"); //for testing purposes
+                        }else if(emp.getRole().equalsIgnoreCase("volunteer")){
+                            //send to volunteer page
+                            JOptionPane.showMessageDialog(this, "Welcome Volunteer Page"); //for testing purposes
+                        }else if(emp.getRole().equalsIgnoreCase("personel")){
+                            //send to personel page
+                            JOptionPane.showMessageDialog(this, "Welcome Personel Page"); //for testing purposes
+                        }
                         break;
                     }else{
                         JOptionPane.showMessageDialog(this, "Invalid Password");
