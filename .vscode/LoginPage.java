@@ -146,9 +146,9 @@ public class LoginPage extends JFrame implements ActionListener{
                         }else if(emp.getRole().equalsIgnoreCase("volunteer")){
                             //send to volunteer page
                             JOptionPane.showMessageDialog(this, "Welcome Volunteer Page"); //for testing purposes
-                        }else if(emp.getRole().equalsIgnoreCase("personel")){
+                        }else if(emp.getRole().equalsIgnoreCase("staff")){
                             //send to personel page
-                            JOptionPane.showMessageDialog(this, "Welcome Personel Page"); //for testing purposes
+                            JOptionPane.showMessageDialog(this, "Welcome Staff Page"); //for testing purposes
                         }
                         break;
                     }else{
