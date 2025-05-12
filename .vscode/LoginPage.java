@@ -152,12 +152,11 @@ public class LoginPage extends JFrame implements ActionListener{
                         }
                         break;
                     }else{
-                        JOptionPane.showMessageDialog(this, "Invalid Password");
+                        //if password is incorrect, show error message
+                        JOptionPane.showMessageDialog(this, "Incorrect Password", "Error", JOptionPane.ERROR_MESSAGE);
                         break;
                     }
                 }else{
-                    JOptionPane.showMessageDialog(this, "Invalid Username");
-                    break;
                 }
             }
         }
