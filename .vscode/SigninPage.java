@@ -1,7 +1,8 @@
-//code for displaying the sign in page after welcome page input
-
-
-//for the login page graphics, we used example code from stackoverflow.com
+/**
+ * Displays the sign in page after welcome page choice. Example graphics code from stackoverflow.com
+ * @author Vella and Ameya
+ * @version 1.0
+ */
 
 //imports for all the graphics, buttons, and readers we may need
 import java.awt.Container;
@@ -18,7 +19,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+/**
+ * This is the SigninPage class, which is the page that the user sees when they choose to sign up for a new account.
+ */
     public class SigninPage extends JFrame implements ActionListener{
 
     private JFrame frame; //main frame
@@ -51,7 +54,10 @@ import javax.swing.JTextField;
     private String pwdText = "";// Declare pwdText as an instance variable
     private String pwd2Text = ""; // Declare pwd2Text as an instance variable (for double password check)
 
-//creates graphics for new login page
+
+    /**
+     * Starting AWT graphics for SigninPage class.
+     */
     public SigninPage() {
 //      assign labels
         firstNameLabel = new JLabel("FIRST NAME:");
@@ -89,7 +95,9 @@ import javax.swing.JTextField;
         frame.setVisible(true); //the main frame
         lframe.setVisible(true); //if the login is successful then the main frame is visible
     }
-
+/**
+ * Calls all the methods to create the sign in page
+ */
     public void signin() {
         setLayoutManager();
         setLocationAndSize();
@@ -97,11 +105,15 @@ import javax.swing.JTextField;
         addActionEvent();
         lframe.setVisible(true);
     }
-
+/**
+ * Sets the layout manager for the sign in page
+ */
     public void setLayoutManager() {
         container.setLayout(null);
     }
- 
+ /**
+  * Sets the location and size of the components on the sign in page
+  */
     public void setLocationAndSize() {
         //set the size of the text fields and buttons
         lframe.setBounds(700,300,500,500);
@@ -124,7 +136,9 @@ import javax.swing.JTextField;
         createButton.setBounds(75, 400, 150, 30);
         resetButton.setBounds(275, 400, 100, 30);
     }
- 
+ /**
+  * Adds all the components to the container
+  */
     public void addComponentsToContainer() {
         container.add(firstNameLabel);
         container.add(lastNameLabel);
@@ -149,13 +163,18 @@ import javax.swing.JTextField;
         lblNewLabel.setBounds(106, 10, 204, 113);
         getContentPane().add(lblNewLabel);
     }
- 
+ /**
+  * Code for buttons and checkboxes
+  */
     public void addActionEvent() {
         createButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
-    
+/**
+ * What occurs when buttons are pressed, including creating account, adding to fields, and displaying password
+ * @param e - action, which button was pressed
+ */
     public void actionPerformed(ActionEvent e) {
             firstName = "";
             lastName = "";

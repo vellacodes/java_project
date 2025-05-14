@@ -1,3 +1,9 @@
+/**
+ * This is the WelcomePage class, which is the first page that the user sees when they open the application.
+ * @author Vella and Ameya
+ * @version 1.0
+ */
+
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;// import JOptionPane
@@ -9,6 +15,9 @@ import javax.swing.JLabel;//import JLabel
 public class WelcomePage extends JFrame{
     private JFrame frame; //main frame
 
+    /**
+     * Creates the WelcomePage frame with a background image
+     */
     public WelcomePage(){
         /*JFrame*/ 
         frame = new JFrame();
@@ -21,6 +30,10 @@ public class WelcomePage extends JFrame{
         frame.setJMenuBar(menuBar);
         frame.setVisible(true); //the main frame
     }
+    /**
+     * Main method to run the WelcomePage, includes pop up with options for login/sign up. Takes user to appropriate page based on user choice
+     * @param args - main method arguments
+     */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             new WelcomePage();
