@@ -1,4 +1,8 @@
-//for the login page graphics, we used example code from stackoverflow.com
+/**
+ * Login Page, displays a login page for the user to enter their username and password. for the login page graphics, we used example code from stackoverflow.com
+ * @author Vella and Ameya
+ * @version 1.0 
+*/
 
 //imports for all the graphics, buttons, and readers we may need
 import java.awt.Container;
@@ -15,7 +19,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+/**
+ * This is the LoginPage class, which is the page that the user sees when they choose to log in to an existing account.
+ */
 public class LoginPage extends JFrame implements ActionListener{
 
     private JFrame frame; //main frame
@@ -32,7 +38,9 @@ public class LoginPage extends JFrame implements ActionListener{
     private String userText = ""; // Declare userText as an instance variable
     private String pwdText = "";  // Declare pwdText as an instance variable
 
-//creates graphics for new login page
+/**
+ * Starting AWT graphics for LoginPage class.
+ */
     public LoginPage() {
         container = getContentPane();
         userLabel = new JLabel("USERNAME");
@@ -58,7 +66,9 @@ public class LoginPage extends JFrame implements ActionListener{
         frame.setVisible(true); //the main frame
         lframe.setVisible(true); //if the login is successful then the main frame is visible
     }
-
+/**
+ * Calls methods to create login page
+ */
     public void login() {
         setLayoutManager();
         setLocationAndSize();
@@ -66,11 +76,15 @@ public class LoginPage extends JFrame implements ActionListener{
         addActionEvent();
         lframe.setVisible(true);
     }
-
+/**
+ * Sets layout manager for login page
+ */
     public void setLayoutManager() {
         container.setLayout(null);
     }
- 
+ /**
+  * Sets the location and size of all the components on the login page
+  */
     public void setLocationAndSize() {
         lframe.setBounds(725,245,500,500);
         userLabel.setBounds(120, 140, 100, 30);
@@ -81,7 +95,9 @@ public class LoginPage extends JFrame implements ActionListener{
         loginButton.setBounds(115, 300, 100, 30);
         resetButton.setBounds(265, 300, 100, 30);
     }
- 
+/**
+ * Adds all the components to the container
+ */
     public void addComponentsToContainer() {
         container.add(userLabel);
         container.add(passwordLabel);
@@ -96,13 +112,18 @@ public class LoginPage extends JFrame implements ActionListener{
         lblNewLabel.setBounds(106, 10, 204, 113);
         getContentPane().add(lblNewLabel);
     }
- 
+/**
+ * Code for buttons and checkboxes
+ */
     public void addActionEvent() {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         showPassword.addActionListener(this);
     }
-
+/**
+ * Action performed method for all the buttons and checkboxes
+ * @param e - action event, which button was pressed
+ */
     public void actionPerformed(ActionEvent e) {
             userText = "";
             pwdText = "";
@@ -126,7 +147,7 @@ public class LoginPage extends JFrame implements ActionListener{
                 while(reader.hasNextLine()){ //while there is a next line in the file
                     line = reader.nextLine(); //read the next line of the file
                     String[] userData = line.split(","); //splits strings into array of strings based on commas\
-                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, role, first name, and last name
+                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6])); //add new employee to array list with user, pass, role, first name, and last name
                 } reader.close();
            }catch(FileNotFoundException ex){
                 System.out.println("File not found"); //if file is not found, print error message

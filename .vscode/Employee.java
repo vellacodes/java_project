@@ -45,20 +45,37 @@ public class Employee {
         return password;
     }
 /**
- * 
+ * Getter for employee role
+ * @return - role of employee
  */
     public String getRole(){
         return role;
     }
+/**
+ * Getter for employee first name
+ * @return - first name of employee
+ */
     public String getName(){
         return name;
     }
+/**
+ * Getter for employee last name
+ * @return - last name of employee
+ */
     public String getLastName(){
         return lastName;
     }
+/**
+ * Getter for date of scheduled work
+ * @return - date of scheduled work
+ */
     public String getDate(){
         return date;
     }
+/**
+ * Getter for time of scheduled work
+ * @return - time of scheduled work
+ */
     public String getTime(){
         return time;
     }

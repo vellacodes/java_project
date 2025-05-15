@@ -80,7 +80,7 @@ import javax.swing.JTextField;
         resetButton = new JButton("RESET");
         showPassword = new JCheckBox("Show Password");
         /*JFrame*/ lframe=new JFrame();
-        container = lframe.getContentPane(); // ADDED this line
+        container = lframe.getContentPane(); 
         lframe.setTitle("Sign Up Page:");
 
         /*JFrame*/ frame = new JFrame();
