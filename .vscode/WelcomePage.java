@@ -40,7 +40,7 @@ public class WelcomePage extends JFrame{
         });
         Object [] options = {"Log in to saved account", "Sign up to create new account"};
         //first pop-up window to ask user to log in or sign up
-        int signIn = JOptionPane.showOptionDialog(null, "Log in or sign up to access", "Sign In page", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        int signIn = JOptionPane.showOptionDialog(null, "Log in or sign up to access", "Welcome!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
         //takes user to different page based on their choice
         if( signIn == JOptionPane.YES_OPTION){
             //sends user to login page if they choose to log in
