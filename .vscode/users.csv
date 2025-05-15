@@ -1,0 +1,8 @@
+user,password,account type,name,last name
+user1,1234,doctor,Ameya,Menon
+imADoctor,doctor,Nurse,Vella,Batdorf
+doc,oc,Doctor,vella,batdorf
+23,2,nurse, vella,b
+st,aff,staff, vella,g
+hello,hi,staff,vella,batdorf
+doc23,2323,doctor,vella,batdorf
