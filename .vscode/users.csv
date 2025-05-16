@@ -1,8 +1,8 @@
-user,password,account type,name,last name
-user1,1234,doctor,Ameya,Menon
-imADoctor,doctor,Nurse,Vella,Batdorf
-doc,oc,Doctor,vella,batdorf
-23,2,nurse, vella,b
-st,aff,staff, vella,g
-hello,hi,staff,vella,batdorf
-doc23,2323,doctor,vella,batdorf
+user,password,account type,name,last name,date,time
+user1,1234,doctor,Ameya,Menon,16,8:00am-10:00am
+imADoctor,doctor,Nurse,Vella,Batdorf,16,8:00am-10:00am
+doc,oc,Doctor,steve,jobs,16,8:00am-10:00am
+st,aff,staff, jj,jack,16,8:00am-10:00am
+hello,hi,staff,john,smith,16,8:00am-10:00am
+doc23,2323,doctor,landa,landa,16,8:00am-10:00am
+doctorvella,pass,Doctor,Vella,Batdorf,16,8:00am-10:00am

@@ -141,7 +141,7 @@ public class LoginPage extends JFrame implements ActionListener{
             */
             //looping through the csv file
            try{
-                File file = new File("U:/github/java_project/.vscode/users.csv"); //create a file object to read the csv file
+                File file = new File("Desktop/java/users.csv"); //create a file object to read the csv file
                 Scanner reader = new Scanner(file);
                 String line = reader.nextLine();
                 while(reader.hasNextLine()){ //while there is a next line in the file
