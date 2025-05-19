@@ -141,7 +141,7 @@ public class LoginPage extends JFrame implements ActionListener{
             */
             //looping through the csv file
            try{
-                File file = new File("Desktop/java/users.csv"); //create a file object to read the csv file
+                File file = new File("users.csv"); //create a file object to read the csv file
                 Scanner reader = new Scanner(file);
                 String line = reader.nextLine();
                 while(reader.hasNextLine()){ //while there is a next line in the file
@@ -160,6 +160,7 @@ public class LoginPage extends JFrame implements ActionListener{
                         JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName()); //if username and password are correct, show welcome message
                         if(emp.getRole().equalsIgnoreCase("doctor")){
                             //send to doctor page
+                            new WeeklyCalendar(emp.getName(), emp.getLastName(), emp.getRole(), emp.getDate(), emp.getTime()); //send to doctor page
                             JOptionPane.showMessageDialog(this, "Welcome Doctor Page"); //for testing purposes
                         }else if(emp.getRole().equalsIgnoreCase("nurse")){
                             //send to nurse page
