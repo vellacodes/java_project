@@ -1,7 +1,7 @@
 /**
  * This is the WelcomePage class, which is the first page that the user sees when they open the application.
  * @author Vella and Ameya
- * @version 1.0
+ * @version 5/19/25
  */
 
 import javax.swing.JFrame;

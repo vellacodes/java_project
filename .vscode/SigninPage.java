@@ -1,7 +1,7 @@
 /**
  * Displays the sign in page after welcome page choice. Example graphics code from stackoverflow.com
  * @author Vella and Ameya
- * @version 1.0
+ * @version 5/19/25
  */
 
 //imports for all the graphics, buttons, and readers we may need

@@ -1,7 +1,7 @@
 /**
  * Employee class to store employee information in files
  * @author Vella and Ameya
- * @version 1.0
+ * @version 5/19/25
 */
 public class Employee {
     private String username;
