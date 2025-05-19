@@ -1,92 +1,156 @@
 //this is code for the calendar and sign ups for time slots on the weekly schedule
 //ameya and vella 5/6/2025
 
+
 import java.awt.*;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Locale;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class WeeklyCalendar extends Frame {
 
 
+   // Fields to store calendar and user information
    private Calendar calendar;
    private int dayOfWeek;
+   private String accountType;
+   private String firstName;
+   private String lastName;
 
 
-   public WeeklyCalendar() {
+   // Constructor initializes the calendar and builds the UI
+   public WeeklyCalendar(String accountType, String firstName, String lastName, String timeSlot) {
        super("Scheduling");
 
 
+       // Store user information
+       this.accountType = accountType.toLowerCase();
+       this.firstName = firstName;
+       this.lastName = lastName;
+
+
+       // Set up calendar data
        calendar = Calendar.getInstance();
        dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
 
-       // Use BorderLayout to place canvas and buttons
+       // Use BorderLayout for frame layout
        setLayout(new BorderLayout());
 
 
-       // Canvas for drawing calendar
-       Canvas canvas = new CalendarCanvas();
-       add(canvas, BorderLayout.CENTER);
+       // Create a tabbed pane for different user roles
+       JTabbedPane tabbedPane = new JTabbedPane();
 
 
-       // Panel with 7 buttons
-       Panel buttonPanel = new Panel();
-       buttonPanel.setLayout(new GridLayout(1, 7));
+       // Define roles
+       String[] roles = {"doctor", "nurse", "volunteer", "staff"};
 
 
+       // Create a tab for each role
+       for (String role : roles) {
+           JPanel rolePanel = new JPanel(new BorderLayout());
 
 
-       String[] daysOfWeek = new java.text.DateFormatSymbols(Locale.getDefault()).getShortWeekdays();
+           // Add a custom Canvas to visually show the calendar
+           Canvas canvas = new CalendarCanvas();
+           rolePanel.add(canvas, BorderLayout.CENTER);
 
 
-       for (int i = 1; i <= 7; i++) {  // daysOfWeek[1] = Sunday
-           Button dayButton = new Button("Schedule " + daysOfWeek[i]);
-           buttonPanel.add(dayButton);
+           // Create a panel with day buttons (Sunday to Saturday)
+           Panel buttonPanel = new Panel(new GridLayout(1, 7));
+           String[] daysOfWeek = new java.text.DateFormatSymbols(Locale.getDefault()).getShortWeekdays();
 
 
-int dayIndex = i;  // capture i for use inside lambda
-dayButton.addActionListener(e -> {
-   // Create a panel to hold buttons
-   JPanel panel = new JPanel();
-   panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+           for (int i = 1; i <= 7; i++) {
+               // Create a day button
+               Button dayButton = new Button("Schedule " + daysOfWeek[i]);
 
 
-   JLabel label = new JLabel("Select the times you would like to schedule yourself:");
-   panel.add(label);
+               // Disable button if the tab does not match the user's account type
+               if (!role.equals(this.accountType)) {
+                   dayButton.setEnabled(false);
+               }
 
 
-   JButton btn1 = new JButton("8:00am - 10:00am");
-   JButton btn2 = new JButton("10:00am - 12:00pm");
-   JButton btn3 = new JButton("2:00pm - 5:00pm");
+               int dayIndex = i;
 
 
-   panel.add(btn1);
-   panel.add(btn2);
-   panel.add(btn3);
+               // Add listener for valid scheduling buttons
+               dayButton.addActionListener(e -> {
+                   // Create a vertical panel with time slot buttons
+                   JPanel panel = new JPanel();
+                   panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+                   panel.add(new JLabel("Select the times you would like to schedule yourself:"));
 
 
-   // Show panel in dialog
-   JOptionPane.showMessageDialog(null, panel, "Select Time Slot", JOptionPane.PLAIN_MESSAGE);
-});
+                   // Time slot options
+                   String[] timeSlots = {
+                       "8:00am - 10:00am",
+                       "10:00am - 12:00pm",
+                       "2:00pm - 5:00pm"
+                   };
 
 
-           // You can add action listeners here if needed
-           // dayButton.addActionListener(e -> System.out.println("Clicked " + daysOfWeek[i]));
+                   // Create a button for each time slot
+                   for (String slot : timeSlots) {
+                       JButton btn = new JButton(slot);
+
+
+                       // When a time slot is selected
+                       btn.addActionListener(ev -> {
+                           try {
+                               // Append user info and selected slot to a CSV file
+                               FileWriter writer = new FileWriter("users.csv", true);
+                               BufferedWriter bw = new BufferedWriter(writer);
+                               PrintWriter pw = new PrintWriter(bw);
+
+
+                               pw.println(firstName + "," + accountType + "," + slot);
+                               pw.close();
+
+
+                               // Show confirmation popup
+                               JOptionPane.showMessageDialog(this,
+                                   "Your time slot has been confirmed.\n\n" +
+                                   "Name: " + firstName + " " + lastName + "\n" +
+                                   "Role: " + accountType + "\n" +
+                                   "Time Slot: " + slot,
+                                   "Confirmation",
+                                   JOptionPane.INFORMATION_MESSAGE);
+                           } catch (IOException ex) {
+                               // Show error message if writing fails
+                               JOptionPane.showMessageDialog(this, "Error saving to file." + ex, "Error", JOptionPane.ERROR_MESSAGE);
+                               ex.printStackTrace();
+                           }
+                       });
+
+
+                       panel.add(btn);
+                   }
+
+
+                   // Show time slot selection dialog
+                   JOptionPane.showMessageDialog(this, panel, "Select Time Slot", JOptionPane.PLAIN_MESSAGE);
+               });
+
+
+               buttonPanel.add(dayButton); // Add each button to the day panel
+           }
+
+
+           rolePanel.add(buttonPanel, BorderLayout.SOUTH); // Add day panel to the bottom
+           tabbedPane.addTab(capitalize(role), rolePanel); // Add tab to the tabbed pane
        }
 
 
-       add(buttonPanel, BorderLayout.SOUTH);
+       // Add the tabbed pane to the main frame
+       add(tabbedPane, BorderLayout.CENTER);
 
 
-       setSize(600, 400);
+       // Configure window
+       setSize(800, 550);
        setVisible(true);
        addWindowListener(new java.awt.event.WindowAdapter() {
            public void windowClosing(java.awt.event.WindowEvent e) {
@@ -96,6 +160,7 @@ dayButton.addActionListener(e -> {
    }
 
 
+   // Inner class to draw the weekly calendar headers and dates
    class CalendarCanvas extends Canvas {
        @Override
        public void paint(Graphics g) {
@@ -107,7 +172,7 @@ dayButton.addActionListener(e -> {
            String[] daysOfWeek = new java.text.DateFormatSymbols(Locale.getDefault()).getShortWeekdays();
 
 
-           // Draw column headers
+           // Draw day names and grid lines
            for (int i = 0; i < 7; i++) {
                int x = i * columnWidth + columnWidth / 2;
                int yweek = 40;
@@ -117,15 +182,19 @@ dayButton.addActionListener(e -> {
                int headingX = width / 2;
 
 
+               // Draw title and day headers
                g.drawString(heading, headingX - g.getFontMetrics().stringWidth(heading) / 2, yheader);
                g.drawLine(0, ydivider, width, ydivider);
                g.drawString(daysOfWeek[i + 1], x - g.getFontMetrics().stringWidth(daysOfWeek[i + 1]) / 2, yweek);
                g.drawLine(i * columnWidth, 50, i * columnWidth, height);
            }
+
+
+           // Final right border line
            g.drawLine(width - 1, 50, width - 1, height);
 
 
-           // Draw dates
+           // Draw actual dates below each day name
            Calendar tempCal = (Calendar) calendar.clone();
            tempCal.add(Calendar.DATE, -(dayOfWeek - tempCal.getFirstDayOfWeek()));
 
@@ -133,15 +202,24 @@ dayButton.addActionListener(e -> {
            for (int i = 0; i < 7; i++) {
                int x = i * columnWidth + columnWidth / 2;
                int y = 100;
-               g.drawString(String.valueOf(tempCal.get(Calendar.DAY_OF_MONTH)),
-                       x - g.getFontMetrics().stringWidth(String.valueOf(tempCal.get(Calendar.DAY_OF_MONTH))) / 2, y);
+               String date = String.valueOf(tempCal.get(Calendar.DAY_OF_MONTH));
+               g.drawString(date, x - g.getFontMetrics().stringWidth(date) / 2, y);
                tempCal.add(Calendar.DATE, 1);
            }
        }
    }
 
 
+   // Helper function to capitalize the first letter of a string
+   private String capitalize(String str) {
+       if (str == null || str.isEmpty()) return str;
+       return str.substring(0, 1).toUpperCase() + str.substring(1);
+   }
+
+
+   // Main method to run the program
    public static void main(String[] args) {
-       new WeeklyCalendar();
+       // You can change the role here to test access control (e.g., "nurse", "volunteer")
+       new WeeklyCalendar(accountType, firstName, lastName, timeSlot);
    }
 }
