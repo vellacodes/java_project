@@ -220,6 +220,6 @@ public class WeeklyCalendar extends Frame {
    // Main method to run the program
    public static void main(String[] args) {
        // You can change the role here to test access control (e.g., "nurse", "volunteer")
-       new WeeklyCalendar(accountType, firstName, lastName, timeSlot);
+       new WeeklyCalendar("accountType", "firstName", "lastName", "timeSlot");
    }
 }
