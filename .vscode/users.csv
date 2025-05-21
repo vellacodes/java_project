@@ -1,3 +1,3 @@
 user,password,account type,name,last name,date,time
-user1,1234,doctor,Ameya,Menon,16,8:00am-10:00am
-user2,2345,dr,v,b,date,time
+user1,1234,Doctor,Ameya,Menon,16,8:00am-10:00am
+user2,2345,Nurse,Vella,Batdorf,date,time

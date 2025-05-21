@@ -52,7 +52,6 @@ public class WelcomePage extends JFrame{
                 EventQueue.invokeLater(() -> {
                     new SigninPage().signin();
                 });
-            
         }else{
             //error message if user closes the pop-up window or clicks cancel
             JOptionPane.showMessageDialog(null, "No option selected", "Error", JOptionPane.ERROR_MESSAGE);
