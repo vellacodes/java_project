@@ -85,7 +85,7 @@ public class WeeklyCalendar extends Frame {
                    String[] timeSlots = {
                        "8:00am - 10:00am",
                        "10:00am - 12:00pm",
-                       "2:00pm - 5:00pm"
+                       "2:00pm - 4:00pm"
                    };
 
                    // Create a button for each time slot
@@ -117,21 +117,16 @@ public class WeeklyCalendar extends Frame {
                                ex.printStackTrace();
                            }
                        });
-
                        panel.add(btn);
                    }
-
                    // Show time slot selection dialog
                    JOptionPane.showMessageDialog(this, panel, "Select Time Slot", JOptionPane.PLAIN_MESSAGE);
                });
-
                buttonPanel.add(dayButton); // Add each button to the day panel
            }
-
            rolePanel.add(buttonPanel, BorderLayout.SOUTH); // Add day panel to the bottom
            tabbedPane.addTab(capitalize(role), rolePanel); // Add tab to the tabbed pane
        }
-
        // Add the tabbed pane to the main frame
        add(tabbedPane, BorderLayout.CENTER);
 
@@ -172,10 +167,8 @@ public class WeeklyCalendar extends Frame {
                g.drawLine(i * columnWidth, 50, i * columnWidth, height);
            }
 
-
            // Final right border line
            g.drawLine(width - 1, 50, width - 1, height);
-
 
            // Draw actual dates below each day name
            Calendar tempCal = (Calendar) calendar.clone();
