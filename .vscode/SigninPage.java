@@ -203,7 +203,7 @@ import javax.swing.JTextField;
                 FileWriter writer = new FileWriter("users.csv", true); //create a file writer to write to the csv file
                 BufferedWriter bw = new BufferedWriter(writer); //create a buffered writer to write to the file
                 PrintWriter pw = new PrintWriter(bw); //create a print writer to write to the file
-                pw.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName + ",date,time" ); //write the user info to the file
+                pw.println("\n" + userText + "," + pwdText + "," + role + "," + firstName + "," + lastName + ",date,time" ); //write the user info to the file
                 System.out.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //for testing purposes
                 pw.close(); //close the file writer
                 JOptionPane.showMessageDialog(this, "Account Created Successfully. Welcome " + role + " " + firstName + " " + lastName); //show success message

@@ -1,9 +1,3 @@
 user,password,account type,name,last name,date,time
 user1,1234,doctor,Ameya,Menon,16,8:00am-10:00am
-imADoctor,doctor,Nurse,Vella,Batdorf,16,8:00am-10:00am
-doc,oc,Doctor,steve,jobs,16,8:00am-10:00am
-st,aff,staff, jj,jack,16,8:00am-10:00am
-hello,hi,staff,john,smith,16,8:00am-10:00am
-doc23,2323,doctor,landa,landa,16,8:00am-10:00am
-doctorvella,pass,Doctor,Vella,Batdorf,16,8:00am-10:00am
-username,password,Volunteer,Vella,Batdorf,date,time
+user2,2345,dr,v,b,date,time
