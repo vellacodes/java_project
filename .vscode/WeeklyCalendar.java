@@ -72,8 +72,6 @@ public class WeeklyCalendar extends Frame {
                    dayButton.setEnabled(false);
                }
 
-               int dayIndex = i;
-
                // Add listener for valid scheduling buttons
                dayButton.addActionListener(e -> {
                    // Create a vertical panel with time slot buttons
