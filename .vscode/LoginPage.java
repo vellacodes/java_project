@@ -147,7 +147,7 @@ public class LoginPage extends JFrame implements ActionListener{
                 while(reader.hasNextLine()){ //while there is a next line in the file
                     line = reader.nextLine(); //read the next line of the file
                     String[] userData = line.split(","); //splits strings into array of strings based on commas\
-                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6])); //add new employee to array list with user, pass, role, first name, and last name
+                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, role, first name, and last name
                 } reader.close();
            }catch(FileNotFoundException ex){
                 System.out.println("File not found"); //if file is not found, print error message
@@ -160,16 +160,16 @@ public class LoginPage extends JFrame implements ActionListener{
                         JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName() + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                         if(emp.getRole().equalsIgnoreCase("doctor")){
                             //send to doctor page
-                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName(), emp.getTime()); //send to doctor page
+                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName()); //send to doctor page
                         }else if(emp.getRole().equalsIgnoreCase("nurse")){
                             //send to nurse page
-                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName(), emp.getTime()); //send to nurse page
+                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName()); //send to nurse page
                         }else if(emp.getRole().equalsIgnoreCase("volunteer")){
                             //send to volunteer page
-                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName(), emp.getTime()); //send to volunteer page
+                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName()); //send to volunteer page
                         }else if(emp.getRole().equalsIgnoreCase("staff")){
                             //send to personel page
-                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName(), emp.getTime()); //send to staff page
+                            new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName()); //send to staff page
                         }
                         break;
                     }else{

@@ -6,8 +6,11 @@
 
 import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Scanner;
+
 import javax.swing.*;
 
 /**
@@ -30,7 +33,7 @@ public class WeeklyCalendar extends Frame {
  * @param lastName - last name of the user
  * @param timeSlot - time slot selected by the user
  */
-   public WeeklyCalendar(String accountType, String firstName, String lastName, String timeSlot) {
+   public WeeklyCalendar(String accountType, String firstName, String lastName) {
        super("Scheduling");
 
        // Store user information
@@ -41,7 +44,10 @@ public class WeeklyCalendar extends Frame {
        // Set up calendar data
        calendar = Calendar.getInstance();
        dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
+    System.out.println(calendar.getTime());
+    System.out.println(dayOfWeek);
+    System.out.println(calendar);
+  
        // Use BorderLayout for frame layout
        setLayout(new BorderLayout());
 
@@ -50,7 +56,6 @@ public class WeeklyCalendar extends Frame {
 
        // Define roles
        String[] roles = {"doctor", "nurse", "volunteer", "staff member"};
-
        // Create a tab for each role
        for (String role : roles) {
            JPanel rolePanel = new JPanel(new BorderLayout());
@@ -94,11 +99,11 @@ public class WeeklyCalendar extends Frame {
                        btn.addActionListener(ev -> {
                            try {
                                // Append user info and selected slot to a CSV file
-                               FileWriter writer = new FileWriter("users.csv", true);
+                               FileWriter writer = new FileWriter("timeSlots.csv", true);
                                BufferedWriter bw = new BufferedWriter(writer);
                                PrintWriter pw = new PrintWriter(bw);
 
-                               pw.println(firstName + "," + accountType + "," + slot);
+                               pw.println(firstName + "," + dayOfWeek + "," + slot);
                                pw.close();
 
                                // Show confirmation popup
@@ -172,7 +177,6 @@ public class WeeklyCalendar extends Frame {
            Calendar tempCal = (Calendar) calendar.clone();
            tempCal.add(Calendar.DATE, -(dayOfWeek - tempCal.getFirstDayOfWeek()));
 
-
            for (int i = 0; i < 7; i++) {
                int x = i * columnWidth + columnWidth / 2;
                int y = 100;
@@ -198,6 +202,6 @@ public class WeeklyCalendar extends Frame {
  */
    public static void main(String[] args) {
        // You can change the role here to test access control (e.g., "nurse", "volunteer")
-       new WeeklyCalendar("accountType", "firstName", "lastName", "timeSlot");
+       new WeeklyCalendar("accountType", "firstName", "lastName");
    }
 }

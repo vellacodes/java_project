@@ -9,8 +9,6 @@ public class Employee {
     private String role;
     private String name;
     private String lastName;
-    private String date;
-    private String time;
 /**
  * Employee object constructor
  * @param username - previously entered username
@@ -21,14 +19,12 @@ public class Employee {
  * @param date - date of scheduled work
  * @param time - time of scheduled work
  */
-    public Employee(String username, String password, String role, String name, String lastName, String date, String time) {
+    public Employee(String username, String password, String role, String name, String lastName) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.name = name;
         this.lastName = lastName;
-        this.date = date;
-        this.time = time;
     }
 /**
  * Getter for employee username
@@ -64,19 +60,5 @@ public class Employee {
  */
     public String getLastName(){
         return lastName;
-    }
-/**
- * Getter for date of scheduled work
- * @return - date of scheduled work
- */
-    public String getDate(){
-        return date;
-    }
-/**
- * Getter for time of scheduled work
- * @return - time of scheduled work
- */
-    public String getTime(){
-        return time;
     }
 }
