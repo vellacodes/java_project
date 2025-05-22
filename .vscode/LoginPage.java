@@ -157,7 +157,7 @@ public class LoginPage extends JFrame implements ActionListener{
                 if(emp.getUsername().equals(userText)){
                     if(emp.getPassword().equals(pwdText)){
                         //log into role
-                        JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName()); //if username and password are correct, show welcome message
+                        JOptionPane.showMessageDialog(this, "Welcome " + emp.getRole() + " " + emp.getName() + " " + emp.getLastName() + "!", "Login Successful", JOptionPane.INFORMATION_MESSAGE);
                         if(emp.getRole().equalsIgnoreCase("doctor")){
                             //send to doctor page
                             new WeeklyCalendar(emp.getRole(), emp.getName(), emp.getLastName(), emp.getTime()); //send to doctor page

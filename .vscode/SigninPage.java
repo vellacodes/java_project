@@ -187,6 +187,15 @@ import javax.swing.JTextField;
             firstName = firstNameField.getText();
             lastName = lastNameField.getText();
             role = roleField.getText(); 
+            if(role.equalsIgnoreCase("doctor")){
+                role = "Doctor"; //if the user is a doctor, set the role to doctor
+            }else if(role.equalsIgnoreCase("nurse")){
+                role = "Nurse"; //if the user is a nurse, set the role to nurse
+            }else if(role.equalsIgnoreCase("volunteer")){   
+                role = "Volunteer"; //if the user is a volunteer, set the role to volunteer
+            }else if(role.equalsIgnoreCase("staff")){
+                role = "Staff Member"; //if the user is a staff, set the role to staff
+            }
             userText = userTextField.getText();
             pwdText = new String(passwordField.getPassword());
             pwd2Text = new String(password2Field.getPassword());
@@ -194,6 +203,7 @@ import javax.swing.JTextField;
                 JOptionPane.showMessageDialog(this, "Passwords do not match"); //if passwords do not match, show error message
                 return; //exit the method if passwords do not match
             }
+
             /*
             string array split on commas
             writes new user info into the csv file
@@ -206,8 +216,7 @@ import javax.swing.JTextField;
                 pw.print("\n" + userText + "," + pwdText + "," + role + "," + firstName + "," + lastName + ",date,time" ); //write the user info to the file
                 System.out.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //for testing purposes
                 pw.close(); //close the file writer
-                JOptionPane.showMessageDialog(this, "Account Created Successfully. Welcome " + role + " " + firstName + " " + lastName); //show success message
-
+                JOptionPane.showMessageDialog(this, "Welcome " + role + " " + firstName + " " + lastName + "!", "Account Created Successfully", JOptionPane.INFORMATION_MESSAGE ); //show success message
                 //when account created, send user to login page
                 EventQueue.invokeLater(() -> {
                     new LoginPage().login(); //send user to login page

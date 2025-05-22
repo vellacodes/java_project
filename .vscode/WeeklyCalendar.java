@@ -25,7 +25,7 @@ public class WeeklyCalendar extends Frame {
 
 /**
  * Constructor initializes the calendar and builds the UI
- * @param accountType - type of user (doctor, nurse, volunteer, staff)
+ * @param accountType - type of user (doctor, nurse, volunteer, staff member)
  * @param firstName - first name of the user
  * @param lastName - last name of the user
  * @param timeSlot - time slot selected by the user
@@ -49,7 +49,7 @@ public class WeeklyCalendar extends Frame {
        JTabbedPane tabbedPane = new JTabbedPane();
 
        // Define roles
-       String[] roles = {"doctor", "nurse", "volunteer", "staff"};
+       String[] roles = {"doctor", "nurse", "volunteer", "staff member"};
 
        // Create a tab for each role
        for (String role : roles) {
