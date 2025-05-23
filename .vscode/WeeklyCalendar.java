@@ -13,11 +13,15 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
+
 /**
  * This is the WeeklyCalendar class, which displays a weekly calendar for scheduling.
  */
 public class WeeklyCalendar extends Frame {
 
+private static String[] daysArray = {
+       "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+};
 
    // Fields to store calendar and user information
    private Calendar calendar;
@@ -44,9 +48,9 @@ public class WeeklyCalendar extends Frame {
        // Set up calendar data
        calendar = Calendar.getInstance();
        dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-    System.out.println(calendar.getTime());
-    System.out.println(dayOfWeek);
-    System.out.println(calendar);
+       System.out.println(calendar.getTime());
+       System.out.println(dayOfWeek);
+       System.out.println(calendar.getTime());
   
        // Use BorderLayout for frame layout
        setLayout(new BorderLayout());
@@ -71,7 +75,7 @@ public class WeeklyCalendar extends Frame {
            for (int i = 1; i <= 7; i++) {
                // Create a day button
                Button dayButton = new Button("Schedule " + daysOfWeek[i]);
-
+                String day = daysOfWeek[i];
                // Disable button if the tab does not match the user's account type
                if (!role.equals(this.accountType)) {
                    dayButton.setEnabled(false);
@@ -103,7 +107,7 @@ public class WeeklyCalendar extends Frame {
                                BufferedWriter bw = new BufferedWriter(writer);
                                PrintWriter pw = new PrintWriter(bw);
 
-                               pw.println(firstName + "," + dayOfWeek + "," + slot);
+                               pw.println(firstName + "," + day + "," + slot);
                                pw.close();
 
                                // Show confirmation popup
@@ -111,12 +115,14 @@ public class WeeklyCalendar extends Frame {
                                    "Your time slot has been confirmed.\n\n" +
                                    "Name: " + firstName + " " + lastName + "\n" +
                                    "Role: " + accountType + "\n" +
+                                   "Day: " + day + "\n" +
                                    "Time Slot: " + slot,
                                    "Confirmation",
                                    JOptionPane.INFORMATION_MESSAGE);
                            } catch (IOException ex) {
                                // Show error message if writing fails
                                JOptionPane.showMessageDialog(this, "Error saving to file." + ex, "Error", JOptionPane.ERROR_MESSAGE);
+                               System.out.println(ev);
                                ex.printStackTrace();
                            }
                        });
