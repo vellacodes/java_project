@@ -29,6 +29,7 @@ private static String[] daysArray = {
    private String accountType;
    private String firstName;
    private String lastName;
+    private JButton hoursButton; // Button to view hours (if needed)
 
 /**
  * Constructor initializes the calendar and builds the UI
@@ -48,9 +49,6 @@ private static String[] daysArray = {
        // Set up calendar data
        calendar = Calendar.getInstance();
        dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-       System.out.println(calendar.getTime());
-       System.out.println(dayOfWeek);
-       System.out.println(calendar.getTime());
   
        // Use BorderLayout for frame layout
        setLayout(new BorderLayout());
@@ -111,14 +109,19 @@ private static String[] daysArray = {
                                pw.close();
 
                                // Show confirmation popup
-                               JOptionPane.showMessageDialog(this,
+                               Object[] options = {"OK", "Hours Page"};
+                               int hourPage = JOptionPane.showOptionDialog(this,
                                    "Your time slot has been confirmed.\n\n" +
                                    "Name: " + firstName + " " + lastName + "\n" +
                                    "Role: " + accountType + "\n" +
                                    "Day: " + day + "\n" +
                                    "Time Slot: " + slot,
-                                   "Confirmation",
-                                   JOptionPane.INFORMATION_MESSAGE);
+                                   "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION,
+                                   JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                                 if (hourPage == JOptionPane.NO_OPTION) {
+                                    new HoursPage(accountType, firstName, lastName).hoursDisplay();
+                                    System.out.println("Hours Page opened.");
+                                 }
                            } catch (IOException ex) {
                                // Show error message if writing fails
                                JOptionPane.showMessageDialog(this, "Error saving to file." + ex, "Error", JOptionPane.ERROR_MESSAGE);
