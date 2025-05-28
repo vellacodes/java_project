@@ -40,7 +40,7 @@ public class HoursPage extends JFrame implements ActionListener{
         LASTNAME = lastName;
 
         container = getContentPane();
-        titleLabel = new JLabel(accountType + " " + firstName + " " + lastName + " Hours Served:");
+        titleLabel = new JLabel(accountType + " " + firstName + " " + lastName + "- Hours Served:");
         dayLabel = new JLabel("Day:");
         timeLabel = new JLabel("Time(s):");
         hoursLabel = new JLabel("Hours Worked:");
@@ -112,11 +112,11 @@ public class HoursPage extends JFrame implements ActionListener{
     public void setLocationAndSize() {
         lframe.setBounds(725,245,500,500);
         titleLabel.setBounds(20, 20, 250, 30);//WORK ON THIS PLS
-        dayLabel.setBounds(20, 20, 100, 30);
-        timeLabel.setBounds(220, 140, 150, 30);
-        hoursLabel.setBounds(220, 210, 150, 30);
-        totalLabel.setBounds(220, 250, 150, 30);
-        backButton.setBounds(115, 300, 100, 30);
+        dayLabel.setBounds(20, 100, 100, 30);
+        timeLabel.setBounds(180, 100, 150, 30);
+        hoursLabel.setBounds(340, 100, 150, 30);
+        totalLabel.setBounds(315, 250, 150, 30);
+        backButton.setBounds(20, 400, 150, 30);
     }
 /**
  * Adds all the components to the container
@@ -156,7 +156,7 @@ public class HoursPage extends JFrame implements ActionListener{
      */
     public static void main(String[] args) {
         // You can change the role here to test access control (e.g., "nurse", "volunteer")
-        String accountType = "nurse"; // Example account type
+        String accountType = "Nurse"; // Example account type
         String firstName = "John"; // Example first name
         String lastName = "Doe"; // Example last name
         new HoursPage(accountType, firstName, lastName).hoursDisplay();
