@@ -22,9 +22,17 @@ public class HoursPage extends JFrame implements ActionListener{
     private Container container;
     private JLabel titleLabel;
     private JLabel dayLabel;
-    private JLabel timeLabel;
     private JLabel hoursLabel;
     private JLabel totalLabel;
+    private JLabel lineLabel;
+    private JLabel line2Label;
+    private JLabel day1;
+    private JLabel day2;
+    private JLabel day3;   
+    private JLabel day4;
+    private JLabel day5;
+    private JLabel day6;
+    private JLabel day7;    
 
     private JButton backButton;
     private final String ACCOUNT; //the account type of the user
@@ -42,37 +50,62 @@ public class HoursPage extends JFrame implements ActionListener{
         container = getContentPane();
         titleLabel = new JLabel(accountType + " " + firstName + " " + lastName + "- Hours Served:");
         dayLabel = new JLabel("Day:");
-        timeLabel = new JLabel("Time(s):");
         hoursLabel = new JLabel("Hours Worked:");
         totalLabel = new JLabel("Total:");
-        /* 
-        if (e.getSource() == loginButton) {
-            userText = userTextField.getText();
-            pwdText = new String(passwordField.getPassword());
-            System.out.println(userText + " " + pwdText); //for testing purposes
-            ArrayList<Employee> employees = new ArrayList<Employee>(); //from employee class- List of role, user, and pass
-            
-            loop through csv file
-            //read line into some variable
-            string array split on commas\
-            creates a size array of strings 
-            read line one before loop b/.c not a person
-            
-            //looping through the csv file
+        lineLabel = new JLabel("------------------------------------------------------------------------------------------------------------");
+        line2Label = new JLabel("--------------------------------");
+
+        int totalHours = 0; //initialize total hours to 0 
+        int sunTotalHours = 0;
+        int monTotalHours = 0;
+        int tueTotalHours = 0;
+        int wedTotalHours = 0;
+        int thuTotalHours = 0;
+        int friTotalHours = 0;
+        int satTotalHours = 0;          
            try{
-                File file = new File("users.csv"); //create a file object to read the csv file
+                File file = new File("timeSlots.csv"); //create a file object to read the csv file
                 Scanner reader = new Scanner(file);
                 String line = reader.nextLine();
                 while(reader.hasNextLine()){ //while there is a next line in the file
                     line = reader.nextLine(); //read the next line of the file
-                    String[] userData = line.split(","); //splits strings into array of strings based on commas\
-                    employees.add(new Employee(userData[0], userData[1], userData[2], userData[3], userData[4])); //add new employee to array list with user, pass, role, first name, and last name
+                    String[] parts = line.split(","); //split the line by commas
+                    String name = parts[0]; //the first part is the name of the user
+                    String day = parts[1]; //the second part is the day of the week
+
+                    
+                    if(name.equalsIgnoreCase(FIRSTNAME)){
+                        if(day.equalsIgnoreCase("sun")){
+                            sunTotalHours = sunTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("mon")){
+                            monTotalHours = monTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("tue")){
+                            tueTotalHours = tueTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("wed")){
+                            wedTotalHours = wedTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("thu")){  
+                            thuTotalHours = thuTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("fri")){
+                            friTotalHours = friTotalHours + 2;
+                        }else if(day.equalsIgnoreCase("sat")){
+                            satTotalHours = satTotalHours + 2;
+                        }
+                    }
+                    
                 } reader.close();
            }catch(FileNotFoundException ex){
                 System.out.println("File not found"); //if file is not found, print error message
            }
-        }
-*/
+        totalHours = sunTotalHours + monTotalHours + tueTotalHours + wedTotalHours + thuTotalHours + friTotalHours + satTotalHours; //calculate total hours worked by the user
+
+        day1 = new JLabel("Sunday" + "                             " + sunTotalHours + " hours");
+        day2 = new JLabel("Monday" + "                          " + monTotalHours + " hours");
+        day3 = new JLabel("Tuesday" + "                       " + tueTotalHours + " hours");
+        day4 = new JLabel("Wednesday" + "                 " + wedTotalHours + " hours");
+        day5 = new JLabel("Thursday" + "                      " + thuTotalHours + " hours");
+        day6 = new JLabel("Friday" + "                        " + friTotalHours + " hours");
+        day7 = new JLabel("Saturday" + "                      " + satTotalHours + " hours");
+        totalLabel = new JLabel("Total: \n" + totalHours + " hours");
         backButton = new JButton("Back To Calendar");
         /*JFrame*/ lframe=new JFrame();
         container = lframe.getContentPane();
@@ -110,13 +143,21 @@ public class HoursPage extends JFrame implements ActionListener{
   * Sets the location and size of all the components on the login page
   */
     public void setLocationAndSize() {
-        lframe.setBounds(725,245,500,500);
+        lframe.setBounds(725,245,400,600);
         titleLabel.setBounds(20, 20, 250, 30);//WORK ON THIS PLS
-        dayLabel.setBounds(20, 100, 100, 30);
-        timeLabel.setBounds(180, 100, 150, 30);
-        hoursLabel.setBounds(340, 100, 150, 30);
-        totalLabel.setBounds(315, 250, 150, 30);
-        backButton.setBounds(20, 400, 150, 30);
+        dayLabel.setBounds(20, 75, 100, 30);
+        hoursLabel.setBounds(150, 75, 150, 30);
+        totalLabel.setBounds(330, 360, 150, 30);
+        lineLabel.setBounds(20, 85, 700, 30);
+        line2Label.setBounds(320, 350, 700, 30);
+        backButton.setBounds(20, 450, 150, 30);
+        day1.setBounds(20, 100, 300, 30);
+        day2.setBounds(20, 140, 300, 30);
+        day3.setBounds(20, 180, 300, 30);
+        day4.setBounds(20, 220, 300, 30);
+        day5.setBounds(20, 260, 300, 30);
+        day6.setBounds(20, 300, 300, 30);
+        day7.setBounds(20, 340, 300, 30);
     }
 /**
  * Adds all the components to the container
@@ -124,9 +165,17 @@ public class HoursPage extends JFrame implements ActionListener{
     public void addComponentsToContainer() {
         container.add(titleLabel);
         container.add(dayLabel);
-        container.add(timeLabel);
         container.add(hoursLabel);
         container.add(totalLabel);
+        container.add(lineLabel);
+        container.add(line2Label);
+        container.add(day1);
+        container.add(day2);
+        container.add(day3);
+        container.add(day4);
+        container.add(day5);
+        container.add(day6);
+        container.add(day7);
         container.add(backButton);
         
         JLabel lblNewLabel = new JLabel("test1.png");
