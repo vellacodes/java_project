@@ -29,7 +29,6 @@ private static String[] daysArray = {
    private String accountType;
    private String firstName;
    private String lastName;
-    private JButton hoursButton; // Button to view hours (if needed)
 
 /**
  * Constructor initializes the calendar and builds the UI
