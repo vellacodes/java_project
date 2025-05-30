@@ -194,7 +194,7 @@ import javax.swing.JTextField;
             }else if(role.equalsIgnoreCase("volunteer")){   
                 role = "Volunteer"; //if the user is a volunteer, set the role to volunteer
             }else if(role.equalsIgnoreCase("staff")){
-                role = "Staff Member"; //if the user is a staff, set the role to staff
+                role = "Staff"; //if the user is a staff, set the role to staff
             }
             userText = userTextField.getText();
             pwdText = new String(passwordField.getPassword());
@@ -213,7 +213,7 @@ import javax.swing.JTextField;
                 FileWriter writer = new FileWriter("users.csv", true); //create a file writer to write to the csv file
                 BufferedWriter bw = new BufferedWriter(writer); //create a buffered writer to write to the file
                 PrintWriter pw = new PrintWriter(bw); //create a print writer to write to the file
-                pw.print("\n" + userText + "," + pwdText + "," + role + "," + firstName + "," + lastName + ",date,time" ); //write the user info to the file
+                pw.print("\n" + userText + "," + pwdText + "," + role + "," + firstName + "," + lastName); //write the user info to the file
                 System.out.println(userText + "," + pwdText + "," + role + "," + firstName + "," + lastName ); //for testing purposes
                 pw.close(); //close the file writer
                 JOptionPane.showMessageDialog(this, "Welcome " + role + " " + firstName + " " + lastName + "!", "Account Created Successfully", JOptionPane.INFORMATION_MESSAGE ); //show success message

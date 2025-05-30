@@ -57,7 +57,7 @@ private static String[] daysArray = {
        JTabbedPane tabbedPane = new JTabbedPane();
 
        // Define roles
-       String[] roles = {"doctor", "nurse", "volunteer", "staff member"};
+       String[] roles = {"doctor", "nurse", "volunteer", "staff"};
        // Create a tab for each role
        for (String role : roles) {
            JPanel rolePanel = new JPanel(new BorderLayout());
@@ -120,7 +120,7 @@ private static String[] daysArray = {
                                    JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                  if (hourPage == JOptionPane.NO_OPTION) {
                                     new HoursPage(accountType, firstName, lastName).hoursDisplay();
-                                    System.out.println("Hours Page opened.");
+                                    dispose();
                                  }
                            } catch (IOException ex) {
                                // Show error message if writing fails

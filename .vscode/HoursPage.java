@@ -32,7 +32,14 @@ public class HoursPage extends JFrame implements ActionListener{
     private JLabel day4;
     private JLabel day5;
     private JLabel day6;
-    private JLabel day7;    
+    private JLabel day7;
+    private JLabel day1Hours;
+    private JLabel day2Hours;
+    private JLabel day3Hours;
+    private JLabel day4Hours;
+    private JLabel day5Hours;
+    private JLabel day6Hours;
+    private JLabel day7Hours;    
 
     private JButton backButton;
     private final String ACCOUNT; //the account type of the user
@@ -52,7 +59,7 @@ public class HoursPage extends JFrame implements ActionListener{
         dayLabel = new JLabel("Day:");
         hoursLabel = new JLabel("Hours Worked:");
         totalLabel = new JLabel("Total:");
-        lineLabel = new JLabel("------------------------------------------------------------------------------------------------------------");
+        lineLabel = new JLabel("--------------------------------------------------------------------------");
         line2Label = new JLabel("--------------------------------");
 
         int totalHours = 0; //initialize total hours to 0 
@@ -98,13 +105,22 @@ public class HoursPage extends JFrame implements ActionListener{
            }
         totalHours = sunTotalHours + monTotalHours + tueTotalHours + wedTotalHours + thuTotalHours + friTotalHours + satTotalHours; //calculate total hours worked by the user
 
-        day1 = new JLabel("Sunday" + "                             " + sunTotalHours + " hours");
-        day2 = new JLabel("Monday" + "                          " + monTotalHours + " hours");
-        day3 = new JLabel("Tuesday" + "                       " + tueTotalHours + " hours");
-        day4 = new JLabel("Wednesday" + "                 " + wedTotalHours + " hours");
-        day5 = new JLabel("Thursday" + "                      " + thuTotalHours + " hours");
-        day6 = new JLabel("Friday" + "                        " + friTotalHours + " hours");
-        day7 = new JLabel("Saturday" + "                      " + satTotalHours + " hours");
+        day1 = new JLabel("Sunday");
+        day2 = new JLabel("Monday");
+        day3 = new JLabel("Tuesday");
+        day4 = new JLabel("Wednesday");
+        day5 = new JLabel("Thursday");
+        day6 = new JLabel("Friday");
+        day7 = new JLabel("Saturday");
+
+        day1Hours = new JLabel(sunTotalHours + " hours");
+        day2Hours = new JLabel(monTotalHours + " hours");
+        day3Hours = new JLabel(tueTotalHours + " hours");
+        day4Hours = new JLabel(wedTotalHours + " hours");
+        day5Hours = new JLabel(thuTotalHours + " hours");
+        day6Hours = new JLabel(friTotalHours + " hours");
+        day7Hours = new JLabel(satTotalHours + " hours");
+
         totalLabel = new JLabel("Total: \n" + totalHours + " hours");
         backButton = new JButton("Back To Calendar");
         /*JFrame*/ lframe=new JFrame();
@@ -146,10 +162,10 @@ public class HoursPage extends JFrame implements ActionListener{
         lframe.setBounds(725,245,400,600);
         titleLabel.setBounds(20, 20, 250, 30);//WORK ON THIS PLS
         dayLabel.setBounds(20, 75, 100, 30);
-        hoursLabel.setBounds(150, 75, 150, 30);
-        totalLabel.setBounds(330, 360, 150, 30);
+        hoursLabel.setBounds(165, 75, 150, 30);
+        totalLabel.setBounds(160, 370, 150, 30);
         lineLabel.setBounds(20, 85, 700, 30);
-        line2Label.setBounds(320, 350, 700, 30);
+        line2Label.setBounds(160, 350, 700, 30);
         backButton.setBounds(20, 450, 150, 30);
         day1.setBounds(20, 100, 300, 30);
         day2.setBounds(20, 140, 300, 30);
@@ -158,6 +174,13 @@ public class HoursPage extends JFrame implements ActionListener{
         day5.setBounds(20, 260, 300, 30);
         day6.setBounds(20, 300, 300, 30);
         day7.setBounds(20, 340, 300, 30);
+        day1Hours.setBounds(175, 100, 300, 30);
+        day2Hours.setBounds(175, 140, 300, 30);
+        day3Hours.setBounds(175, 180, 300, 30);
+        day4Hours.setBounds(175, 220, 300, 30);
+        day5Hours.setBounds(175, 260, 300, 30);
+        day6Hours.setBounds(175, 300, 300, 30);
+        day7Hours.setBounds(175, 340, 300, 30);
     }
 /**
  * Adds all the components to the container
@@ -176,6 +199,13 @@ public class HoursPage extends JFrame implements ActionListener{
         container.add(day5);
         container.add(day6);
         container.add(day7);
+        container.add(day1Hours);
+        container.add(day2Hours);
+        container.add(day3Hours);
+        container.add(day4Hours);
+        container.add(day5Hours);
+        container.add(day6Hours);
+        container.add(day7Hours);
         container.add(backButton);
         
         JLabel lblNewLabel = new JLabel("test1.png");
@@ -197,6 +227,7 @@ public class HoursPage extends JFrame implements ActionListener{
         if(e.getSource() == backButton) {
             // If the back button is pressed, go back to the calendar page
             WeeklyCalendar calendar = new WeeklyCalendar(ACCOUNT,FIRSTNAME,LASTNAME); //create a new instance of the WeeklyCalendar class
+            lframe.dispose(); //close the current frame
         }
     }
     /**
